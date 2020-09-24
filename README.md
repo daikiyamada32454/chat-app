@@ -27,7 +27,7 @@ Things you may want to cover:
 
 # テーブル設計
 
-##  users テーブル
+## users テーブル
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
@@ -38,26 +38,27 @@ Things you may want to cover:
 ### Association
 
 - has_many :room_users
-- has_many :room,through: room_users
+- has_many :rooms, through: room_users
 - has_many :messages
 
 ## rooms テーブル
 
-| Column   | Type   | Options     |
-| ---------| ------ | ----------- |
-| name     | string | null: false |
+| Column | Type   | Options     |
+| ------ | ------ | ----------- |
+| name   | string | null: false |
 
 ### Association
 
-- has_many :room_user
-- has_many :user,through: room_users
+- has_many :room_users
+- has_many :users, through: room_users
 - has_many :messages
 
-## room_user テーブル
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| user     | references | null: false, foreign_key: true |
-| room     | references | null: false, foreign_kye: true |
+## room_users テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| room   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -65,11 +66,14 @@ Things you may want to cover:
 - belongs_to :user
 
 ## messages テーブル
-| Column   | Type       | Options                        |
-| ---------| ---------- | ------------------------------ |
-| content  | string     |                                |
-| user     | references | null: false, foreign_key: true |
-| room     | references | null: false, foreign_key: true |
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| content | string     |                                |
+| user    | references | null: false, foreign_key: true |
+| room    | references | null: false, foreign_key: true |
+
+### Association
 
 - belongs_to :room
 - belongs_to :user
